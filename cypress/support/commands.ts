@@ -43,3 +43,11 @@ Cypress.Commands.add(
         // guaranteed to be an element
     }
 )
+
+//Uncomment the following lines to check warnings
+
+// Cypress.Commands.add('myCommand', (aaa: String) => {})
+//
+// Cypress.Commands.overwrite('myCommand', ()=>{})
+//
+// Cypress.Commands.overwrite('visit', (orig, url, options) => {})
