@@ -23,3 +23,23 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('myCommand', (aaa: String) => {
+    console.log(aaa)
+})
+
+Cypress.Commands.overwrite('visit', (orig, url, options) => {
+    url = 'https://google.com'
+    return  orig(url, options)
+})
+
+Cypress.Commands.add(
+    'myclick',
+    {
+        prevSubject: 'element',
+    },
+    (subject) => {
+        // receives the previous subject and it's
+        // guaranteed to be an element
+    }
+)
