@@ -28,9 +28,11 @@ Cypress.Commands.add('myCommand', (aaa: String) => {
     console.log(aaa)
 })
 
-Cypress.Commands.overwrite('visit', (orig, url, options) => {
+type VisitMethod = (url: string, options?: Partial<Cypress.VisitOptions>) => Cypress.Chainable<Cypress.AUTWindow>;
+
+Cypress.Commands.overwrite('visit', (orig: VisitMethod, url: string, options: Partial<Cypress.VisitOptions>) => {
     url = 'https://google.com'
-    return  orig(url, options)
+    return orig(url, options)
 })
 
 Cypress.Commands.add(
